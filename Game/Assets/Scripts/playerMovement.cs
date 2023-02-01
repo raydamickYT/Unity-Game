@@ -5,14 +5,15 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
-    private float ColorCounter;
     float Horizontal;
     [SerializeField] float jumpingPower;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] public GameObject Player;
-    [SerializeField] private Animator Animator;
+    [SerializeField] private Animator PlayerAnimator;
+    [SerializeField] private Animator JasAnimator;
+    
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundlayer;
 
@@ -21,7 +22,9 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");
-        Animator.SetFloat("Speed", Mathf.Abs(Horizontal));
+        PlayerAnimator.SetFloat("Speed", Mathf.Abs(Horizontal));
+        JasAnimator.SetFloat("JasSpeed", Mathf.Abs(Horizontal));
+
 
         Flip();
     }
@@ -46,11 +49,5 @@ public class playerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        var NPC = other.GetComponent<ItemPickup>();
-        ColorCounter = NPC.ColorCounter;
     }
 }

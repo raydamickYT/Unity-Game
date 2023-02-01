@@ -16,8 +16,6 @@ public class ItemPickup : MonoBehaviour
     public TextMesh Score;
     //private Color Kleur;
     public Color Kleur;
-    [SerializeField] public GameObject Player;
-
 
     private void Awake()
     {
@@ -43,23 +41,25 @@ public class ItemPickup : MonoBehaviour
         {
             Yes = true;
             ColorCounter += 0.3f;
-            var test = other.GetComponent<playerMovement>();
-            test.Player.GetComponent<SpriteRenderer>().material.color = Kleur;
+            var test = other.GetComponent<Jas>();
+            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
             //Destroy(gameObject);
             if (Yes)
             {
                 Score.text = "Thank You SO much";
+                TimerCheck = true;
             }
         }
         if (Input.GetKey(KeyCode.N) && ButtonPressed)
         {
             No = true;
             ColorCounter -= 0.3f;
-            var test = other.GetComponent<playerMovement>();
-            Player.GetComponent<SpriteRenderer>().material.color = Kleur;
+            var test = other.GetComponent<Jas>();
+            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (No)
             {
                 Score.text = "Dickhead";
+                TimerCheck = true;
             }
         }
 
@@ -74,17 +74,21 @@ public class ItemPickup : MonoBehaviour
             if (Timer <= 0)
             {
                 Score.text = "";
+                TimerCheck = false;
             }
         }
 
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if(!ButtonPressed) TimerCheck = true;
         if (ButtonPressed && !No && !Yes)
         {
             TimerCheck = true;
             Score.text = "HEY, GET BACK HERE";
             ColorCounter -= 0.3f;
+            var test = other.GetComponent<Jas>();
+            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
         }
     }
 }
