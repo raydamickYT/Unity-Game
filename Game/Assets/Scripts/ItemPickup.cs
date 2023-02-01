@@ -6,6 +6,8 @@ using TMPro;
 public class ItemPickup : MonoBehaviour
 {
     public static ItemPickup Instance;
+    [SerializeField] public float ChoiceYes;
+    [SerializeField] public float ChoiceNo;
 
     [TextArea]
     [SerializeField] private string Dialogue1;
@@ -23,7 +25,7 @@ public class ItemPickup : MonoBehaviour
     private bool No = false; //check of player ja of nee heeft gezegd
     private bool Yes = false; //check om of player ja of nee heeft gezegd
     private bool TimerCheck = false; //check var voor Timer
-    [SerializeField] private float Timer = 2; //hoeang de timer duurt
+    [SerializeField] private float Timer = 2; //hoelang de timer duurt
 
     public TextMeshPro Score;
     //private Color Kleur;
@@ -40,14 +42,12 @@ public class ItemPickup : MonoBehaviour
     private void Update()
     {
         Kleur = new Color(TempColorCounter, TempColorCounter, TempColorCounter);
-        //print(TempColorCounter);
         TimerFunc();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!ButtonPressed) Score.text = Dialogue1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
-
         if (Input.GetKey(KeyCode.F))
         {
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
@@ -55,8 +55,9 @@ public class ItemPickup : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
         {
+             print("2");
             Yes = true;
-            TempColorCounter += Jas.Instance.ColorStappen;
+            TempColorCounter += Jas.Instance.ColorStappen * ChoiceYes;
             Jas.Instance.ColorCounter = TempColorCounter;
             Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (Yes)
@@ -67,8 +68,9 @@ public class ItemPickup : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
         {
+            print("1");
             No = true;
-            TempColorCounter -= Jas.Instance.ColorStappen;
+            TempColorCounter += Jas.Instance.ColorStappen * ChoiceNo;
             Jas.Instance.ColorCounter = TempColorCounter;
             Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (No)
@@ -84,6 +86,8 @@ public class ItemPickup : MonoBehaviour
     {
         if (TimerCheck)
         {
+            //print(Timer);
+
             Timer -= Time.deltaTime;
             if (Timer <= 0)
             {
@@ -100,10 +104,9 @@ public class ItemPickup : MonoBehaviour
         {
             TimerCheck = true;
             Score.text = "HEY, GET BACK HERE";
-                print("test");
-                TempColorCounter -= Jas.Instance.ColorStappen/2;
-                Jas.Instance.ColorCounter = TempColorCounter;
-                Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+            TempColorCounter += (Jas.Instance.ColorStappen / 2) * ChoiceNo;
+            Jas.Instance.ColorCounter = TempColorCounter;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
         }
     }
 }
