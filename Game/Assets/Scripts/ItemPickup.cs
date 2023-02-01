@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    [TextArea]
+    [SerializeField] private string Dialogue;
     public float ColorCounter = 1f;
-    private bool Pressed = false;
-    private bool No = false;
-    private bool Yes = true;
+    private bool ButtonPressed = false;
+    private bool No = false; //check of player ja of nee heeft gezegd
+    private bool Yes = false; //check om of player ja of nee heeft gezegd
+    private bool TimerCheck = false; //check var voor Timer
+    [SerializeField] private float Timer = 2; //hoeang de timer duurt
+
     public TextMesh Score;
     //private Color Kleur;
     public Color Kleur;
@@ -21,21 +26,22 @@ public class ItemPickup : MonoBehaviour
     private void Update()
     {
         Kleur = new Color(ColorCounter, ColorCounter, ColorCounter);
-
+        TimerFunc();
     }
 
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!Pressed) Score.text = "Press F \n start mission?"; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
+        if (!ButtonPressed) Score.text = Dialogue; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
 
         if (Input.GetKey(KeyCode.F))
         {
-            Pressed = true;
+            ButtonPressed = true;
             Score.text = "Would you please help me? \n (Y) Yes          (N) No";
         }
-        if (Input.GetKey(KeyCode.Y) && Pressed)
+        if (Input.GetKey(KeyCode.Y) && ButtonPressed)
         {
+            Yes = true;
             ColorCounter += 0.3f;
             var test = other.GetComponent<playerMovement>();
             test.Player.GetComponent<SpriteRenderer>().material.color = Kleur;
@@ -45,7 +51,7 @@ public class ItemPickup : MonoBehaviour
                 Score.text = "Thank You SO much";
             }
         }
-        if (Input.GetKey(KeyCode.N) && Pressed)
+        if (Input.GetKey(KeyCode.N) && ButtonPressed)
         {
             No = true;
             ColorCounter -= 0.3f;
@@ -59,19 +65,26 @@ public class ItemPickup : MonoBehaviour
 
 
     }
-    private void OnTriggerExit2D(Collider2D other)
+    public void TimerFunc()
     {
-        float Timer = 4;
-        if (Pressed && !No && !Yes)
+        if (TimerCheck)
         {
-            Score.text = "HEY, GET BACK HERE";
-            ColorCounter -= 0.3f;
             Timer -= Time.deltaTime;
-            if (Timer == 0)
+            print(Timer);
+            if (Timer <= 0)
             {
                 Score.text = "";
             }
         }
 
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (ButtonPressed && !No && !Yes)
+        {
+            TimerCheck = true;
+            Score.text = "HEY, GET BACK HERE";
+            ColorCounter -= 0.3f;
+        }
     }
 }

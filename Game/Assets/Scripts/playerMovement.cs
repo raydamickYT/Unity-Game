@@ -6,12 +6,13 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
     private float ColorCounter;
-    float horizontal;
+    float Horizontal;
     [SerializeField] float jumpingPower;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] public GameObject Player;
+    [SerializeField] private Animator Animator;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundlayer;
 
@@ -19,18 +20,8 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        // hoe langer je de Jump knop in gedrukt houdt hoe hoger je komt.
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower * 0.5f);
-        }
+        Horizontal = Input.GetAxis("Horizontal");
+        Animator.SetFloat("Speed", Mathf.Abs(Horizontal));
 
         Flip();
     }
@@ -38,19 +29,17 @@ public class playerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // laat het character bewegen
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        print(ColorCounter);
+        rb.velocity = new Vector2(Horizontal * speed, rb.velocity.y);
     }
 
     private bool IsGrounded()
     {
-
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
     }
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (isFacingRight && Horizontal < 0f || !isFacingRight && Horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -59,7 +48,8 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         var NPC = other.GetComponent<ItemPickup>();
         ColorCounter = NPC.ColorCounter;
     }
