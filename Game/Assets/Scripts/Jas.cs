@@ -11,11 +11,11 @@ public class Jas : MonoBehaviour
     void Awake() => Instance = this; //declare dat we dit script bedoelen
 
     private void Update() {
-        // if(ColorCounter <= 0.2f || ColorCounter >= 0.8f){
-        //     ColorStappen -= 0.2f;
-        // } else if(ColorCounter > 0.2f || ColorCounter < 0.8f){
-        //     ColorStappen += 0.2f;
-        // }
+        if(ColorCounter <= 0.2f || ColorCounter >= 0.8f){
+            ColorStappen = 0.1f;
+        } else if(ColorCounter > 0.2f || ColorCounter < 0.8f){
+            ColorStappen = 0.3f;
+        }
         print(ColorCounter);
     }
 }
