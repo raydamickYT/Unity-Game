@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Jas : MonoBehaviour
 {
-    private float ColorCounter;
+    public static Jas Instance; //maak een var voor dit script
+    public float ColorCounter = 0.5f;
+    public float ColorStappen = 0.3f;
 
-    [SerializeField] public GameObject JasSpeler;
+    void Awake() => Instance = this; //declare dat we dit script bedoelen
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        var NPC = other.GetComponent<ItemPickup>();
-        //ColorCounter = NPC.ColorCounter;
+    private void Update() {
+        if(ColorCounter <= 0.2f || ColorCounter >= 0.8f){
+            ColorStappen = 0.1f;
+        } else if(ColorCounter > 0.2f || ColorCounter < 0.8f){
+            ColorStappen = 0.3f;
+        }
+        print(ColorCounter);
     }
 }

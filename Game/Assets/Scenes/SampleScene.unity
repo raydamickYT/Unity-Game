@@ -563,7 +563,7 @@ MonoBehaviour:
   Dialogue: 'Press F
 
     start mission?'
-  ColorCounter: 1
+  TempColorCounter: 0
   Timer: 4
   Score: {fileID: 96139502}
   Kleur: {r: 0, g: 0, b: 0, a: 0}
@@ -690,7 +690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1270025494
 Transform:
   m_ObjectHideFlags: 0
@@ -719,10 +719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: 
-  ColorCounter: 1
+  Dialogue: help me 3
+  TempColorCounter: 0
   Timer: 4
-  Score: {fileID: 0}
+  Score: {fileID: 2028888742}
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1270025496
 BoxCollider2D:
@@ -820,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1453941684
 Transform:
   m_ObjectHideFlags: 0
@@ -849,10 +849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: 
-  ColorCounter: 1
+  Dialogue: help me 2
+  TempColorCounter: 0
   Timer: 4
-  Score: {fileID: 0}
+  Score: {fileID: 342742212}
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1453941686
 BoxCollider2D:
@@ -997,7 +997,6 @@ MonoBehaviour:
   speed: 8
   jumpingPower: 5
   rb: {fileID: 1792833281}
-  Player: {fileID: 1066562354}
   PlayerAnimator: {fileID: 1066562359}
   JasAnimator: {fileID: 2106963908}
   groundCheck: {fileID: 1461238767}
@@ -1608,4 +1607,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0f0b6f536147e458086443dd1d31b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JasSpeler: {fileID: 2106963906}
+  ColorCounter: 0.5
+  ColorStappen: 0.3
