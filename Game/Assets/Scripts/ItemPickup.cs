@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    public static ItemPickup Instance;
+
     [TextArea]
     [SerializeField] private string Dialogue;
-    public float ColorCounter = 1f;
+    public float TempColorCounter;
     private bool ButtonPressed = false;
     private bool No = false; //check of player ja of nee heeft gezegd
     private bool Yes = false; //check om of player ja of nee heeft gezegd
@@ -17,16 +19,20 @@ public class ItemPickup : MonoBehaviour
     //private Color Kleur;
     public Color Kleur;
 
-    private void Awake()
+    void Awake() => Instance = this;
+
+    private void FixedUpdate()
     {
+        TempColorCounter = Mathf.Abs(Jas.Instance.ColorCounter);
+        //print(TempColorCounter);
     }
 
     private void Update()
     {
-        Kleur = new Color(ColorCounter, ColorCounter, ColorCounter);
+        Kleur = new Color(TempColorCounter, TempColorCounter, TempColorCounter);
+        //print(TempColorCounter);
         TimerFunc();
     }
-
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -34,28 +40,27 @@ public class ItemPickup : MonoBehaviour
 
         if (Input.GetKey(KeyCode.F))
         {
-            ButtonPressed = true;
+            ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
             Score.text = "Would you please help me? \n (Y) Yes          (N) No";
         }
-        if (Input.GetKey(KeyCode.Y) && ButtonPressed)
+        if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
         {
             Yes = true;
-            ColorCounter += 0.3f;
-            var test = other.GetComponent<Jas>();
-            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
-            //Destroy(gameObject);
+            TempColorCounter += Jas.Instance.ColorStappen;
+            Jas.Instance.ColorCounter = TempColorCounter;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (Yes)
             {
                 Score.text = "Thank You SO much";
                 TimerCheck = true;
             }
         }
-        if (Input.GetKey(KeyCode.N) && ButtonPressed)
+        if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
         {
             No = true;
-            ColorCounter -= 0.3f;
-            var test = other.GetComponent<Jas>();
-            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
+            TempColorCounter -= Jas.Instance.ColorStappen;
+            Jas.Instance.ColorCounter = TempColorCounter;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (No)
             {
                 Score.text = "Dickhead";
@@ -70,7 +75,6 @@ public class ItemPickup : MonoBehaviour
         if (TimerCheck)
         {
             Timer -= Time.deltaTime;
-            print(Timer);
             if (Timer <= 0)
             {
                 Score.text = "";
@@ -81,14 +85,14 @@ public class ItemPickup : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(!ButtonPressed) TimerCheck = true;
+        if (!ButtonPressed) TimerCheck = true;
         if (ButtonPressed && !No && !Yes)
         {
             TimerCheck = true;
             Score.text = "HEY, GET BACK HERE";
-            ColorCounter -= 0.3f;
-            var test = other.GetComponent<Jas>();
-            test.JasSpeler.GetComponent<SpriteRenderer>().material.color = Kleur;
+            TempColorCounter -= Jas.Instance.ColorStappen;
+            Jas.Instance.ColorCounter = TempColorCounter;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
         }
     }
 }

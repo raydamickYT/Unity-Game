@@ -10,7 +10,6 @@ public class playerMovement : MonoBehaviour
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] public GameObject Player;
     [SerializeField] private Animator PlayerAnimator;
     [SerializeField] private Animator JasAnimator;
     
@@ -21,10 +20,10 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Horizontal = Input.GetAxis("Horizontal");
+        Horizontal = Input.GetAxis("Horizontal"); //walk var
+        //animaties voor het lopen
         PlayerAnimator.SetFloat("Speed", Mathf.Abs(Horizontal));
         JasAnimator.SetFloat("JasSpeed", Mathf.Abs(Horizontal));
-
 
         Flip();
     }
