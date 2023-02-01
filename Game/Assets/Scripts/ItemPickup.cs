@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
     public static ItemPickup Instance;
 
     [TextArea]
-    [SerializeField] private string Dialogue;
+    [SerializeField] private string Dialogue1;
+    [TextArea]
+    [SerializeField] private string Dialogue2;
+    [TextArea]
+    [SerializeField] private string DialogueYes;
+    [TextArea]
+    [SerializeField] private string DialogueNo;
+    [TextArea]
+    [SerializeField] private string DialogueWalkAway;
+
     public float TempColorCounter;
     private bool ButtonPressed = false;
     private bool No = false; //check of player ja of nee heeft gezegd
@@ -15,7 +25,7 @@ public class ItemPickup : MonoBehaviour
     private bool TimerCheck = false; //check var voor Timer
     [SerializeField] private float Timer = 2; //hoeang de timer duurt
 
-    public TextMesh Score;
+    public TextMeshPro Score;
     //private Color Kleur;
     public Color Kleur;
 
@@ -36,12 +46,12 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!ButtonPressed) Score.text = Dialogue; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
+        if (!ButtonPressed) Score.text = Dialogue1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
 
         if (Input.GetKey(KeyCode.F))
         {
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
-            Score.text = "Would you please help me? \n (Y) Yes          (N) No";
+            Score.text = Dialogue2;
         }
         if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
         {
@@ -51,7 +61,7 @@ public class ItemPickup : MonoBehaviour
             Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
             if (Yes)
             {
-                Score.text = "Thank You SO much";
+                Score.text = DialogueYes;
                 TimerCheck = true;
             }
         }
@@ -90,9 +100,10 @@ public class ItemPickup : MonoBehaviour
         {
             TimerCheck = true;
             Score.text = "HEY, GET BACK HERE";
-            TempColorCounter -= Jas.Instance.ColorStappen;
-            Jas.Instance.ColorCounter = TempColorCounter;
-            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+                print("test");
+                TempColorCounter -= Jas.Instance.ColorStappen/2;
+                Jas.Instance.ColorCounter = TempColorCounter;
+                Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
         }
     }
 }
