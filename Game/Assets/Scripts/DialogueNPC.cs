@@ -16,15 +16,15 @@ public class DialogueNPC : MonoBehaviour
     public TextMeshPro TextMeshPro;
     //text voor het aardige deel
     [TextArea]
-    [SerializeField] private string Aardig1;
+    [SerializeField] private string Neutraal1;
     [TextArea]
-    [SerializeField] private string Aardig2;
+    [SerializeField] private string Neutraal2;
     [TextArea]
-    [SerializeField] private string AardigYes;
+    [SerializeField] private string Neutraalyes;
     [TextArea]
-    [SerializeField] private string AardigNo;
+    [SerializeField] private string NeutraalNo;
     [TextArea]
-    [SerializeField] private string AardigWalkAway;
+    [SerializeField] private string NeutraalWalkAway;
 
     //text voor te licht
     [TextArea]
@@ -76,11 +76,11 @@ public class DialogueNPC : MonoBehaviour
     {
         //print("N"); //debug
 
-        if (!ButtonPressed) TextMeshPro.text = Aardig1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
+        if (!ButtonPressed) TextMeshPro.text = Neutraal1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
         if (Input.GetKey(KeyCode.F))
         {
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
-            TextMeshPro.text = Aardig2;
+            TextMeshPro.text = Neutraal2;
         }
         if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
         {
@@ -88,7 +88,7 @@ public class DialogueNPC : MonoBehaviour
             if (Yes)
             {
                 ItemPickup.Instance.Lighter();
-                TextMeshPro.text = AardigYes;
+                TextMeshPro.text = Neutraalyes;
                 TimerCheck = true;
             }
         }
@@ -98,7 +98,7 @@ public class DialogueNPC : MonoBehaviour
             if (No)
             {
                 ItemPickup.Instance.Darker();
-                TextMeshPro.text = AardigNo;
+                TextMeshPro.text = NeutraalNo;
                 TimerCheck = true;
             }
         }
@@ -169,7 +169,7 @@ public class DialogueNPC : MonoBehaviour
 
     private void WalkAway(){
         if(JasColorCheck > 0.2f && JasColorCheck < 0.8f){
-            TextMeshPro.text = AardigWalkAway;
+            TextMeshPro.text = NeutraalWalkAway;
         }
         if(JasColorCheck <= 0.2f){
             TextMeshPro.text = TeDonkerWalkAway;
@@ -199,7 +199,7 @@ public class DialogueNPC : MonoBehaviour
         {
             ItemPickup.Instance.Darker();
             TimerCheck = true;
-            TextMeshPro.text = AardigWalkAway;
+            TextMeshPro.text = NeutraalWalkAway;
         }
     }
 }
