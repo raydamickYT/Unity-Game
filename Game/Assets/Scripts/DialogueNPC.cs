@@ -26,20 +26,33 @@ public class DialogueNPC : MonoBehaviour
     [TextArea]
     [SerializeField] private string AardigWalkAway;
 
-    //text voor deel niet aardig
+    //text voor te licht
     [TextArea]
-    [SerializeField] private string NietAardig1;
+    [SerializeField] private string TeDonker1;
     [TextArea]
-    [SerializeField] private string NietAardig2;
+    [SerializeField] private string TeDonker2;
     [TextArea]
-    [SerializeField] private string NietAardigYes;
+    [SerializeField] private string TeDonkerYes;
     [TextArea]
-    [SerializeField] private string NietAardigNo;
+    [SerializeField] private string TeDonkerNo;
     [TextArea]
-    [SerializeField] private string NietAardigWalkAway;
+    [SerializeField] private string TeDonkerWalkAway;
 
-    private void Start() {
-        
+    //text voor te donker
+    [TextArea]
+    [SerializeField] private string TeLicht1;
+    [TextArea]
+    [SerializeField] private string TeLicht2;
+    [TextArea]
+    [SerializeField] private string TeLichtYes;
+    [TextArea]
+    [SerializeField] private string TeLichtNo;
+    [TextArea]
+    [SerializeField] private string TeLichtWalkAway;
+
+    private void Start()
+    {
+
     }
 
     void Awake() => Instance = this;
@@ -52,20 +65,17 @@ public class DialogueNPC : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (JasColorCheck > 0.2f && JasColorCheck < 0.8f)
-        {
-            Aardig();
-        }
+        if (JasColorCheck > 0.2f && JasColorCheck < 0.8f) Neutraal();
 
-        if (JasColorCheck < 0.2)
-        {
-            NietAardig();
-        }
+        if (JasColorCheck < 0.2f) TeDonker();
 
+        if(JasColorCheck > 0.8f) Telicht();
     }
 
-    private void Aardig()
+    private void Neutraal()
     {
+        //print("N"); //debug
+
         if (!ButtonPressed) TextMeshPro.text = Aardig1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
         if (Input.GetKey(KeyCode.F))
         {
@@ -94,21 +104,22 @@ public class DialogueNPC : MonoBehaviour
         }
     }
 
-    private void NietAardig()
+    private void TeDonker()
     {
-        if (!ButtonPressed) TextMeshPro.text = NietAardig1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
+        //print("te donker"); //debug
+        if (!ButtonPressed) TextMeshPro.text = TeDonker1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
         if (Input.GetKey(KeyCode.F))
         {
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
-            TextMeshPro.text = NietAardig2;
+            TextMeshPro.text = TeDonker2;
         }
         if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
         {
             Yes = true;
             if (Yes)
             {
-                ItemPickup.Instance.Lighter();   
-                TextMeshPro.text = NietAardigYes;
+                ItemPickup.Instance.Lighter();
+                TextMeshPro.text = TeDonkerYes;
                 TimerCheck = true;
             }
         }
@@ -118,9 +129,53 @@ public class DialogueNPC : MonoBehaviour
             if (No)
             {
                 ItemPickup.Instance.Darker();
-                TextMeshPro.text = NietAardigNo;
+                TextMeshPro.text = TeDonkerNo;
                 TimerCheck = true;
             }
+        }
+
+    }
+
+    private void Telicht()
+    {
+        //print("Licht"); //debug
+        if (!ButtonPressed) TextMeshPro.text = TeLicht1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
+        if (Input.GetKey(KeyCode.F))
+        {
+            ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
+            TextMeshPro.text = TeLicht2;
+        }
+        if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
+        {
+            Yes = true;
+            if (Yes)
+            {
+                ItemPickup.Instance.Lighter();
+                TextMeshPro.text = TeLichtYes;
+                TimerCheck = true;
+            }
+        }
+        if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
+        {
+            No = true;
+            if (No)
+            {
+                ItemPickup.Instance.Darker();
+                TextMeshPro.text = TeLichtNo;
+                TimerCheck = true;
+            }
+        }
+    }
+
+    private void WalkAway(){
+        if(JasColorCheck > 0.2f && JasColorCheck < 0.8f){
+            TextMeshPro.text = AardigWalkAway;
+        }
+        if(JasColorCheck <= 0.2f){
+            TextMeshPro.text = TeDonkerWalkAway;
+        }
+        if(JasColorCheck >= 0.8f){
+            TextMeshPro.text = TeLichtWalkAway;
         }
     }
     public void TimerFunc()
@@ -136,6 +191,7 @@ public class DialogueNPC : MonoBehaviour
         }
 
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!ButtonPressed) TimerCheck = true;

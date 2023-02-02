@@ -8,18 +8,37 @@ public class Jas : MonoBehaviour
     public float ColorCounter = 0.5f;
     public float ColorStappen = 0.3f;
 
-    private void Start() {
+    private void Start()
+    {
         GetComponent<SpriteRenderer>().material.color = new Color(ColorCounter, ColorCounter, ColorCounter);
     }
 
     void Awake() => Instance = this; //declare dat we dit script bedoelen
 
-    private void Update() {
-        if(ColorCounter <= 0.2f || ColorCounter >= 0.8f){
+    private void Update()
+    {
+        if (ColorCounter <= 0.2f || ColorCounter >= 0.8f)
+        {
             ColorStappen = 0.1f;
-        } else if(ColorCounter > 0.2f || ColorCounter < 0.8f){
+        }
+        else if (ColorCounter > 0.2f || ColorCounter < 0.8f)
+        {
             ColorStappen = 0.3f;
         }
-        print(ColorCounter);
+
+        //VERWIJDER DIT LATER
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ColorCounter += ColorStappen;
+            GetComponent<SpriteRenderer>().material.color = ItemPickup.Instance.Kleur;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ColorCounter -= ColorStappen;
+            GetComponent<SpriteRenderer>().material.color = ItemPickup.Instance.Kleur;
+        }
+
+
+        //print(ColorCounter); //debug
     }
 }
