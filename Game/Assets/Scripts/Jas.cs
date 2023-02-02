@@ -6,7 +6,7 @@ public class Jas : MonoBehaviour
 {
     public static Jas Instance; //maak een var voor dit script
     public float ColorCounter = 0.5f;
-    public float ColorStappen = 0.3f;
+    public float ColorStappen = 0.1f;
 
     //deze storen, de impact van de keuze zodat designers zelf kunnen kiezen per NPC of de keuze positief of negatief is.
     public float YesImpact;
@@ -21,14 +21,7 @@ public class Jas : MonoBehaviour
 
     private void Update()
     {
-        if (ColorCounter <= 0.2f || ColorCounter >= 0.8f)
-        {
-            ColorStappen = 0.1f;
-        }
-        else if (ColorCounter > 0.2f || ColorCounter < 0.8f)
-        {
-            ColorStappen = 0.3f;
-        }
+        
 
         //VERWIJDER DIT LATER
         if (Input.GetKeyDown(KeyCode.K))
@@ -43,7 +36,7 @@ public class Jas : MonoBehaviour
         }
 
 
-        //print(ColorCounter); //debug
+        print(ColorCounter); //debug
     }
 
     private void OnTriggerEnter2D(Collider2D other)

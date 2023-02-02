@@ -35,17 +35,4 @@ public class ItemPickup : MonoBehaviour
         Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * Jas.Instance.YesImpact;
         Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
     }
-
-//moesten hun eigen functies krijgen omdat de functie 2x wordt uitgevoerd door de game
-    public void WalkingAwayLighter()
-    {
-        Jas.Instance.ColorCounter += (Jas.Instance.ColorStappen * Jas.Instance.YesImpact)/2;
-        Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
-    }
-
-        public void WalkingAwayDarker()
-    {
-        Jas.Instance.ColorCounter += (Jas.Instance.ColorStappen * Jas.Instance.NoImpact)/2;
-        Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
-    }
 }

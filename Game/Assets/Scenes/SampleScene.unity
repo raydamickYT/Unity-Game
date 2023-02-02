@@ -896,7 +896,7 @@ MonoBehaviour:
   Neutraal2: y/n
   Neutraalyes: y
   NeutraalNo: n
-  NeutraalWalkAway: 
+  NeutraalWalkAway: test
   TeDonker1: Hier Moet nog Tekst ingevuld worden1
   TeDonker2: 
   TeDonkerYes: 
@@ -1465,7 +1465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1270025494
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,17 +1835,17 @@ MonoBehaviour:
   Neutraal2: fd
   Neutraalyes: fg
   NeutraalNo: dd
-  NeutraalWalkAway: 
+  NeutraalWalkAway: fgf
   TeDonker1: hier moet nog tekst ingevuld worden1
-  TeDonker2: 
-  TeDonkerYes: 
-  TeDonkerNo: 
-  TeDonkerWalkAway: 
+  TeDonker2: f
+  TeDonkerYes: f
+  TeDonkerNo: f
+  TeDonkerWalkAway: gf
   TeLicht1: hier moet nog tekst ingevuld worden2
-  TeLicht2: 
-  TeLichtYes: 
-  TeLichtNo: 
-  TeLichtWalkAway: 
+  TeLicht2: f
+  TeLichtYes: f
+  TeLichtNo: f
+  TeLichtWalkAway: fgf
 --- !u!1 &1461238766
 GameObject:
   m_ObjectHideFlags: 0
