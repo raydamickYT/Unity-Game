@@ -6,8 +6,10 @@ using TMPro;
 public class ItemPickup : MonoBehaviour
 {
     public static ItemPickup Instance;
-    [SerializeField] private float ColorYes = 1;
-    [SerializeField] private float ColorNo;
+
+    //deze worden gelezen wanneer de player collide met de NPC
+    public float ColorYes;
+    public float ColorNo;
 
     public Color Kleur;
 
@@ -17,19 +19,33 @@ public class ItemPickup : MonoBehaviour
     private void Update()
     {
         //jas is de kleur van de ColorCounter
-        //print(ColorNo);
+        //print(ColorYes);
         Kleur = new Color(Jas.Instance.ColorCounter, Jas.Instance.ColorCounter, Jas.Instance.ColorCounter);
     }
 
     public void Darker()
     {
-        Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * ColorNo;
+        //de stored values worden hier gebruikt om de kleur positief of negatief te beïnvloeden.
+        Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * Jas.Instance.NoImpact;
         Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
     }
 
     public void Lighter()
     {
-        Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * ColorYes;
+        Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * Jas.Instance.YesImpact;
+        Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+    }
+
+//moesten hun eigen functies krijgen omdat de functie 2x wordt uitgevoerd door de game
+    public void WalkingAwayLighter()
+    {
+        Jas.Instance.ColorCounter += (Jas.Instance.ColorStappen * Jas.Instance.YesImpact)/2;
+        Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+    }
+
+        public void WalkingAwayDarker()
+    {
+        Jas.Instance.ColorCounter += (Jas.Instance.ColorStappen * Jas.Instance.NoImpact)/2;
         Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
     }
 }

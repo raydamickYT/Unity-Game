@@ -853,7 +853,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -892,24 +892,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 2
   TextMeshPro: {fileID: 131580540}
-  Aardig1: 'aardig1
-
-    F'
-  Aardig2: 'aardig2
-
-    Y of N'
-  AardigYes: AardigYEs
-  AardigNo: AardigNo
-  AardigWalkAway: AardigWalkAway
-  NietAardig1: 'NietAardig1
-
-    F'
-  NietAardig2: 'NietAardig2
-
-    Y of N'
-  NietAardigYes: nietAardigYes
-  NietAardigNo: nietaardigno
-  NietAardigWalkAway: nietaardigwalkaway
+  Neutraal1: Hier moet nog tekst ingevuld worden
+  Neutraal2: y/n
+  Neutraalyes: y
+  NeutraalNo: n
+  NeutraalWalkAway: 
+  TeDonker1: Hier Moet nog Tekst ingevuld worden1
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
+  TeDonkerWalkAway: 
+  TeLicht1: hier moet nog tekst ingevuld worden2
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
+  TeLichtWalkAway: 
 --- !u!1 &747227575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,16 +1589,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 2
   TextMeshPro: {fileID: 2106893766}
-  Aardig1: Nog niet ingevuld
-  Aardig2: 
-  AardigYes: 
-  AardigNo: 
-  AardigWalkAway: 
-  NietAardig1: Nog NietIngevuld2
-  NietAardig2: 
-  NietAardigYes: 
-  NietAardigNo: 
-  NietAardigWalkAway: 
+  Neutraal1: hier moet nog tekst ingevuld worden
+  Neutraal2: 
+  Neutraalyes: 
+  NeutraalNo: 
+  NeutraalWalkAway: 
+  TeDonker1: hier moet nog tekst ingevuld worden1
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
+  TeDonkerWalkAway: 
+  TeLicht1: hier moet nog tekst ingevuld worden2
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
+  TeLichtWalkAway: 
 --- !u!1 &1373701072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorYes: 1
+  ColorYes: -1
   ColorNo: 1
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1453941686
@@ -1829,16 +1831,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 2
   TextMeshPro: {fileID: 1774946611}
-  Aardig1: f
-  Aardig2: y/n
-  AardigYes: y
-  AardigNo: n
-  AardigWalkAway: 
-  NietAardig1: 
-  NietAardig2: 
-  NietAardigYes: 
-  NietAardigNo: 
-  NietAardigWalkAway: 
+  Neutraal1: hier moet nog tekst ingevuld worden.
+  Neutraal2: fd
+  Neutraalyes: fg
+  NeutraalNo: dd
+  NeutraalWalkAway: 
+  TeDonker1: hier moet nog tekst ingevuld worden1
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
+  TeDonkerWalkAway: 
+  TeLicht1: hier moet nog tekst ingevuld worden2
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
+  TeLichtWalkAway: 
 --- !u!1 &1461238766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,3 +3219,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColorCounter: 0.5
   ColorStappen: 0.3
+  YesImpact: 1
+  NoImpact: 1

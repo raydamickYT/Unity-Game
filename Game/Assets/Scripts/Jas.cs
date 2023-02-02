@@ -8,6 +8,10 @@ public class Jas : MonoBehaviour
     public float ColorCounter = 0.5f;
     public float ColorStappen = 0.3f;
 
+    //deze storen, de impact van de keuze zodat designers zelf kunnen kiezen per NPC of de keuze positief of negatief is.
+    public float YesImpact;
+    public float NoImpact;
+
     private void Start()
     {
         GetComponent<SpriteRenderer>().material.color = new Color(ColorCounter, ColorCounter, ColorCounter);
@@ -40,5 +44,16 @@ public class Jas : MonoBehaviour
 
 
         //print(ColorCounter); //debug
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<DialogueNPC>() != null)
+        {
+            var NPC = other.GetComponent<ItemPickup>();
+            //hier wordt de waarde opgehaald en tijdelijk gestored.
+            YesImpact = NPC.ColorYes;
+            NoImpact = NPC.ColorNo;
+        }
     }
 }
