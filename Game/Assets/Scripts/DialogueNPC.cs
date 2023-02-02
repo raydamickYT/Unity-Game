@@ -23,8 +23,6 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string Neutraalyes;
     [TextArea]
     [SerializeField] private string NeutraalNo;
-    [TextArea]
-    [SerializeField] private string NeutraalWalkAway;
 
     //text voor te licht
     [TextArea]
@@ -35,8 +33,6 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string TeDonkerYes;
     [TextArea]
     [SerializeField] private string TeDonkerNo;
-    [TextArea]
-    [SerializeField] private string TeDonkerWalkAway;
 
     //text voor te donker
     [TextArea]
@@ -47,13 +43,6 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string TeLichtYes;
     [TextArea]
     [SerializeField] private string TeLichtNo;
-    [TextArea]
-    [SerializeField] private string TeLichtWalkAway;
-
-    private void Start()
-    {
-
-    }
 
     void Awake() => Instance = this;
 
@@ -69,7 +58,7 @@ public class DialogueNPC : MonoBehaviour
 
         if (JasColorCheck < 0.2f) TeDonker();
 
-        if(JasColorCheck > 0.8f) Telicht();
+        if (JasColorCheck > 0.8f) Telicht();
     }
 
     private void Neutraal()
@@ -167,17 +156,6 @@ public class DialogueNPC : MonoBehaviour
         }
     }
 
-    private void WalkAway(){
-        if(JasColorCheck > 0.2f && JasColorCheck < 0.8f){
-            TextMeshPro.text = NeutraalWalkAway;
-        }
-        if(JasColorCheck <= 0.2f){
-            TextMeshPro.text = TeDonkerWalkAway;
-        }
-        if(JasColorCheck >= 0.8f){
-            TextMeshPro.text = TeLichtWalkAway;
-        }
-    }
     public void TimerFunc()
     {
         if (TimerCheck)
@@ -190,16 +168,5 @@ public class DialogueNPC : MonoBehaviour
             }
         }
 
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!ButtonPressed) TimerCheck = true;
-        if (ButtonPressed && !No && !Yes)
-        {
-            ItemPickup.Instance.Darker();
-            TimerCheck = true;
-            TextMeshPro.text = NeutraalWalkAway;
-        }
     }
 }
