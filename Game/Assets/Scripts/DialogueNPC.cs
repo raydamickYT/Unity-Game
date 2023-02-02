@@ -115,11 +115,14 @@ public class DialogueNPC : MonoBehaviour
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
             Neutral = true;
-            ItemPickup.Instance.Neutral();
-            TextMeshPro.text = NeutraalNeutral;
-            TimerCheck = true;
-            string Dialogue = DialogueNPCPlayerNeutral;
-            DialoguePlayer.Instance.Talk(Dialogue);
+            if (Neutral)
+            {
+                ItemPickup.Instance.Neutral();
+                TextMeshPro.text = NeutraalNeutral;
+                TimerCheck = true;
+                string Dialogue = DialogueNPCPlayerNeutral;
+                DialoguePlayer.Instance.Talk(Dialogue);
+            }
         }
     }
 
@@ -132,7 +135,7 @@ public class DialogueNPC : MonoBehaviour
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
             TextMeshPro.text = TeDonker2;
         }
-        if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !Yes)
+        if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
             Yes = true;
             if (Yes)
@@ -162,11 +165,15 @@ public class DialogueNPC : MonoBehaviour
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
             Neutral = true;
-            ItemPickup.Instance.Neutral();
-            TextMeshPro.text = NeutraalNeutral;
-            TimerCheck = true;
-            string Dialogue = DialogueNPCPlayerNeutral;
-            DialoguePlayer.Instance.Talk(Dialogue);
+
+            if (Neutral)
+            {
+                ItemPickup.Instance.Neutral();
+                TextMeshPro.text = NeutraalNeutral;
+                TimerCheck = true;
+                string Dialogue = DialogueNPCPlayerNeutral;
+                DialoguePlayer.Instance.Talk(Dialogue);
+            }
         }
 
     }
@@ -211,11 +218,14 @@ public class DialogueNPC : MonoBehaviour
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
             Neutral = true;
-            ItemPickup.Instance.Neutral();
-            TextMeshPro.text = NeutraalNeutral;
-            TimerCheck = true;
-            string Dialogue = DialogueNPCPlayerNeutral;
-            DialoguePlayer.Instance.Talk(Dialogue);
+            if (Neutral)
+            {
+                ItemPickup.Instance.Neutral();
+                TextMeshPro.text = NeutraalNeutral;
+                TimerCheck = true;
+                string Dialogue = DialogueNPCPlayerNeutral;
+                DialoguePlayer.Instance.Talk(Dialogue);
+            }
         }
     }
 
@@ -230,6 +240,10 @@ public class DialogueNPC : MonoBehaviour
                 TimerCheck = false;
             }
         }
-
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        TextMeshPro.text = "";
+        ButtonPressed = false;
     }
 }

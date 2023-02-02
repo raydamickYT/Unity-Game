@@ -10,7 +10,6 @@ public class ItemPickup : MonoBehaviour
     //deze worden gelezen wanneer de player collide met de NPC
     public float ColorYes;
     public float ColorNo;
-    public float ColorNeutral;
 
     public Color Kleur;
 
