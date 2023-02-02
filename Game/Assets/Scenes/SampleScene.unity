@@ -176,20 +176,20 @@ MonoBehaviour:
   DialogueNPCPlayerYes: 
   DialogueNPCPlayerNo: 
   DialogueNPCPlayerNeutral: 
-  Neutraal1: wfdfadsfasdfasdfasd
-  Neutraal2: sdfasdfasdfasdfasdf
-  Neutraalyes: asdfasdfasdfasdf
-  NeutraalNo: fasdfasdfasdfasdf
+  Neutraal1: 
+  Neutraal2: 
+  Neutraalyes: 
+  NeutraalNo: 
   NeutraalNeutral: 
-  TeDonker1: adsfadsfadfasdfasdf
-  TeDonker2: ffdfdfdfdfdf
-  TeDonkerYes: asdfwevfvsdfvsdfv
-  TeDonkerNo: vsdfvsdfvsdfvsdfv
+  TeDonker1: 
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
   TeDonkerNeutral: 
-  TeLicht1: sdfvsdfvsdfv
-  TeLicht2: sdfvsdfvsdf
-  TeLichtYes: sdfvsdfvsdfv
-  TeLichtNo: sdfvsdfvsdfv
+  TeLicht1: 
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
   TeLichtNeutral: 
 --- !u!114 &49796306
 MonoBehaviour:
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorYes: 0
-  ColorNo: 0
+  ColorYes: -1
+  ColorNo: 1
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &49796307
 BoxCollider2D:
@@ -588,25 +588,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 2
+  Timer: 5
   TextMeshPro: {fileID: 1829507459}
   DialogueNPCPlayerYes: 
   DialogueNPCPlayerNo: 
-  DialogueNPCPlayerNeutral: 
-  Neutraal1: wfdfadsfasdfasdfasd
-  Neutraal2: sdfasdfasdfasdfasdf
-  Neutraalyes: asdfasdfasdfasdf
-  NeutraalNo: fasdfasdfasdfasdf
-  NeutraalNeutral: 
-  TeDonker1: adsfadsfadfasdfasdf
-  TeDonker2: ffdfdfdfdfdf
-  TeDonkerYes: asdfwevfvsdfvsdfv
-  TeDonkerNo: vsdfvsdfvsdfvsdfv
+  DialogueNPCPlayerNeutral: 'Yikes, some people are weird '
+  Neutraal1: '*grumbling* Press (F)'
+  Neutraal2: 'Ask whats wrong? Press(1)
+
+    Ignore? Press (2)
+
+    Offer help? Press
+    (3)
+
+
+'
+  Neutraalyes: None of your business kid get lost.
+  NeutraalNo: I'd better not bother that guy... He  seemed angry.
+  NeutraalNeutral: HELP, PISS OFF KID. Who the heck do you think you are!
+  TeDonker1: 
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
   TeDonkerNeutral: 
-  TeLicht1: sdfvsdfvsdfv
-  TeLicht2: sdfvsdfvsdf
-  TeLichtYes: sdfvsdfvsdfv
-  TeLichtNo: sdfvsdfvsdfv
+  TeLicht1: 
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
   TeLichtNeutral: 
 --- !u!114 &155228438
 MonoBehaviour:
@@ -620,8 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorYes: 0
-  ColorNo: 0
+  ColorYes: 1
+  ColorNo: -1
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &155228439
 BoxCollider2D:
@@ -2328,14 +2336,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: 2
   TextMeshPro: {fileID: 2106893766}
-  DialogueNPCPlayerYes: glad I said yes
-  DialogueNPCPlayerNo: shouldve said yes
-  DialogueNPCPlayerNeutral: it alright
-  Neutraal1: hi
-  Neutraal2: 1/2/3
-  Neutraalyes: 1
-  NeutraalNo: 2
-  NeutraalNeutral: 3
+  DialogueNPCPlayerYes: "I guess sometimes the better option doesn't always have
+    the consequences you expect\u2026"
+  DialogueNPCPlayerNo: "I guess sometimes the better option doesn't always have the
+    consequences you expect\u2026"
+  DialogueNPCPlayerNeutral: 
+  Neutraal1: Meow! Press (F)
+  Neutraal2: 'Shoo, the cat away? Press (1)
+
+    Pet the cat? Press (2)'
+  Neutraalyes: 'Wow, if I hadn''t shoo''d that cat away it would''ve probably gotten
+    hit.. '
+  NeutraalNo: The cat didn't want to be pet, it ended up scratching you.
+  NeutraalNeutral: 
   TeDonker1: 
   TeDonker2: 
   TeDonkerYes: 
@@ -4610,7 +4623,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072171018}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00b96c4fd58ae430592841a8c8a054fd, type: 3}
