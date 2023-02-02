@@ -10,6 +10,7 @@ public class ItemPickup : MonoBehaviour
     //deze worden gelezen wanneer de player collide met de NPC
     public float ColorYes;
     public float ColorNo;
+    public float ColorNeutral;
 
     public Color Kleur;
 
@@ -34,5 +35,22 @@ public class ItemPickup : MonoBehaviour
     {
         Jas.Instance.ColorCounter += Jas.Instance.ColorStappen * Jas.Instance.YesImpact;
         Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+    }
+
+    public void Neutral()
+    {
+        //do nothing if it's in the safe space of 0.21 - 0.79
+        if (Jas.Instance.ColorCounter <= 0.2f)
+        {
+            //change color in a positive way
+            Jas.Instance.ColorCounter -= 0.1f;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+        }
+        else if (Jas.Instance.ColorCounter >= 0.8f)
+        {
+            //change color in a positive way
+            Jas.Instance.ColorCounter += 0.1f;
+            Jas.Instance.GetComponent<SpriteRenderer>().material.color = Kleur;
+        }
     }
 }

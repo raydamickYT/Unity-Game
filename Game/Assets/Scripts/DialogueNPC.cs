@@ -10,6 +10,7 @@ public class DialogueNPC : MonoBehaviour
     private float JasColorCheck;
     private bool No = false; //check of player ja of nee heeft gezegd
     private bool Yes = false; //check om of player ja of nee heeft gezegd
+    private bool Neutral = false; //check of player neutral was
     private bool TimerCheck = false; //check var voor Timer
     public float Timer = 2; //hoelang de timer duurt
 
@@ -20,6 +21,8 @@ public class DialogueNPC : MonoBehaviour
     public string DialogueNPCPlayerYes;
     [TextArea]
     public string DialogueNPCPlayerNo;
+    [TextArea]
+    public string DialogueNPCPlayerNeutral;
 
     //text voor het aardige deel
     [TextArea]
@@ -30,6 +33,8 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string Neutraalyes;
     [TextArea]
     [SerializeField] private string NeutraalNo;
+    [TextArea]
+    [SerializeField] private string NeutraalNeutral;
 
     //text voor te licht
     [TextArea]
@@ -40,6 +45,8 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string TeDonkerYes;
     [TextArea]
     [SerializeField] private string TeDonkerNo;
+    [TextArea]
+    [SerializeField] private string TeDonkerNeutral;
 
     //text voor te donker
     [TextArea]
@@ -50,6 +57,8 @@ public class DialogueNPC : MonoBehaviour
     [SerializeField] private string TeLichtYes;
     [TextArea]
     [SerializeField] private string TeLichtNo;
+    [TextArea]
+    [SerializeField] private string TeLichtNeutral;
 
     void Awake() => Instance = this;
 
@@ -77,7 +86,7 @@ public class DialogueNPC : MonoBehaviour
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
             TextMeshPro.text = Neutraal2;
         }
-        if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
+        if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
             Yes = true;
             if (Yes)
@@ -91,7 +100,7 @@ public class DialogueNPC : MonoBehaviour
 
             }
         }
-        if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
+        else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
             No = true;
             if (No)
@@ -102,6 +111,15 @@ public class DialogueNPC : MonoBehaviour
                 string Dialogue = DialogueNPCPlayerNo;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
+        }
+        else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
+        {
+            Neutral = true;
+            ItemPickup.Instance.Neutral();
+            TextMeshPro.text = NeutraalNeutral;
+            TimerCheck = true;
+            string Dialogue = DialogueNPCPlayerNeutral;
+            DialoguePlayer.Instance.Talk(Dialogue);
         }
     }
 
@@ -114,7 +132,7 @@ public class DialogueNPC : MonoBehaviour
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
             TextMeshPro.text = TeDonker2;
         }
-        if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
+        if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !Yes)
         {
             Yes = true;
             if (Yes)
@@ -127,7 +145,7 @@ public class DialogueNPC : MonoBehaviour
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
-        if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
+        else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
             No = true;
             if (No)
@@ -141,6 +159,15 @@ public class DialogueNPC : MonoBehaviour
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
+        else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
+        {
+            Neutral = true;
+            ItemPickup.Instance.Neutral();
+            TextMeshPro.text = NeutraalNeutral;
+            TimerCheck = true;
+            string Dialogue = DialogueNPCPlayerNeutral;
+            DialoguePlayer.Instance.Talk(Dialogue);
+        }
 
     }
 
@@ -153,7 +180,7 @@ public class DialogueNPC : MonoBehaviour
             ButtonPressed = true;//om te checken of we niet aan het speedrunnen zijn
             TextMeshPro.text = TeLicht2;
         }
-        if (Input.GetKey(KeyCode.Y) && ButtonPressed && !Yes)
+        if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
             Yes = true;
             if (Yes)
@@ -167,7 +194,7 @@ public class DialogueNPC : MonoBehaviour
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
-        if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
+        else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
             No = true;
             if (No)
@@ -180,6 +207,15 @@ public class DialogueNPC : MonoBehaviour
                 string Dialogue = DialogueNPCPlayerNo;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
+        }
+        else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
+        {
+            Neutral = true;
+            ItemPickup.Instance.Neutral();
+            TextMeshPro.text = NeutraalNeutral;
+            TimerCheck = true;
+            string Dialogue = DialogueNPCPlayerNeutral;
+            DialoguePlayer.Instance.Talk(Dialogue);
         }
     }
 
