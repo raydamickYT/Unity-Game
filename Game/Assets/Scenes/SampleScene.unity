@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 593995357}
   - component: {fileID: 593995356}
   - component: {fileID: 593995358}
+  - component: {fileID: 593995359}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -874,21 +875,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChoiceYes: -1
-  ChoiceNo: 1
-  Dialogue1: 'Press F
-
-    Would you like to start mission?'
-  Dialogue2: 'Would you please help me?
-
-    (Y) Yes          (N) No'
-  DialogueYes: thank you SO much
-  DialogueNo: Dickhead
-  DialogueWalkAway: HEY GET BACK HERE
-  TempColorCounter: 0
-  Timer: 4
-  Score: {fileID: 131580540}
+  ColorYes: 1
+  ColorNo: -1
   Kleur: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &593995359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593995354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 2
+  TextMeshPro: {fileID: 131580540}
+  Aardig1: 'aardig1
+
+    F'
+  Aardig2: 'aardig2
+
+    Y of N'
+  AardigYes: AardigYEs
+  AardigNo: AardigNo
+  AardigWalkAway: AardigWalkAway
+  NietAardig1: 'NietAardig1
+
+    F'
+  NietAardig2: 'NietAardig2
+
+    Y of N'
+  NietAardigYes: nietAardigYes
+  NietAardigNo: nietaardigno
+  NietAardigWalkAway: nietaardigwalkaway
 --- !u!1 &747227575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,13 +1461,14 @@ GameObject:
   - component: {fileID: 1270025497}
   - component: {fileID: 1270025496}
   - component: {fileID: 1270025495}
+  - component: {fileID: 1270025498}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1270025494
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,16 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChoiceYes: 0
-  ChoiceNo: 0
-  Dialogue1: 5sf;dosifuspofiuw
-  Dialogue2: sfsfewfsdf
-  DialogueYes: sfsfe
-  DialogueNo: sfsefd
-  DialogueWalkAway: efsdfes
-  TempColorCounter: 0
-  Timer: 4
-  Score: {fileID: 2106893766}
+  ColorYes: 0
+  ColorNo: 0
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1270025496
 BoxCollider2D:
@@ -1564,6 +1578,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1270025498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270025493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 2
+  TextMeshPro: {fileID: 2106893766}
+  Aardig1: Nog niet ingevuld
+  Aardig2: 
+  AardigYes: 
+  AardigNo: 
+  AardigWalkAway: 
+  NietAardig1: Nog NietIngevuld2
+  NietAardig2: 
+  NietAardigYes: 
+  NietAardigNo: 
+  NietAardigWalkAway: 
 --- !u!1 &1373701072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,6 +1698,7 @@ GameObject:
   - component: {fileID: 1453941687}
   - component: {fileID: 1453941686}
   - component: {fileID: 1453941685}
+  - component: {fileID: 1453941688}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -1695,16 +1734,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChoiceYes: 0
-  ChoiceNo: 0
-  Dialogue1: sfsf
-  Dialogue2: dsfsfs
-  DialogueYes: sdfsf
-  DialogueNo: dsfsdsf
-  DialogueWalkAway: sdfssf
-  TempColorCounter: 0
-  Timer: 4
-  Score: {fileID: 1774946611}
+  ColorYes: 1
+  ColorNo: 1
   Kleur: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1453941686
 BoxCollider2D:
@@ -1784,6 +1815,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1453941688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453941683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 2
+  TextMeshPro: {fileID: 1774946611}
+  Aardig1: f
+  Aardig2: y/n
+  AardigYes: y
+  AardigNo: n
+  AardigWalkAway: 
+  NietAardig1: 
+  NietAardig2: 
+  NietAardigYes: 
+  NietAardigNo: 
+  NietAardigWalkAway: 
 --- !u!1 &1461238766
 GameObject:
   m_ObjectHideFlags: 0

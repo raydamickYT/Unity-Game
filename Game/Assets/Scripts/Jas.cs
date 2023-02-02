@@ -8,6 +8,10 @@ public class Jas : MonoBehaviour
     public float ColorCounter = 0.5f;
     public float ColorStappen = 0.3f;
 
+    private void Start() {
+        GetComponent<SpriteRenderer>().material.color = new Color(ColorCounter, ColorCounter, ColorCounter);
+    }
+
     void Awake() => Instance = this; //declare dat we dit script bedoelen
 
     private void Update() {
