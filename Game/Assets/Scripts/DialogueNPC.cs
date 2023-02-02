@@ -11,9 +11,16 @@ public class DialogueNPC : MonoBehaviour
     private bool No = false; //check of player ja of nee heeft gezegd
     private bool Yes = false; //check om of player ja of nee heeft gezegd
     private bool TimerCheck = false; //check var voor Timer
-    [SerializeField] private float Timer = 2; //hoelang de timer duurt
+    public float Timer = 2; //hoelang de timer duurt
 
     public TextMeshPro TextMeshPro;
+
+    //text die de NPC de Player meegeeft
+    [TextArea]
+    public string DialogueNPCPlayerYes;
+    [TextArea]
+    public string DialogueNPCPlayerNo;
+
     //text voor het aardige deel
     [TextArea]
     [SerializeField] private string Neutraal1;
@@ -64,7 +71,6 @@ public class DialogueNPC : MonoBehaviour
     private void Neutraal()
     {
         //print("N"); //debug
-
         if (!ButtonPressed) TextMeshPro.text = Neutraal1; //als F niet ingedrukt is dan laat hij de volgende tekst zien.
         if (Input.GetKey(KeyCode.F))
         {
@@ -79,6 +85,10 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Lighter();
                 TextMeshPro.text = Neutraalyes;
                 TimerCheck = true;
+                //start thoughts after saying yes
+                string Dialogue = DialogueNPCPlayerYes;
+                DialoguePlayer.Instance.Talk(Dialogue);
+
             }
         }
         if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
@@ -89,6 +99,8 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = NeutraalNo;
                 TimerCheck = true;
+                string Dialogue = DialogueNPCPlayerNo;
+                DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
     }
@@ -110,6 +122,9 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Lighter();
                 TextMeshPro.text = TeDonkerYes;
                 TimerCheck = true;
+                //start thoughts after saying yes
+                string Dialogue = DialogueNPCPlayerYes;
+                DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
@@ -120,6 +135,10 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = TeDonkerNo;
                 TimerCheck = true;
+
+                //start thoughts after saying yes
+                string Dialogue = DialogueNPCPlayerNo;
+                DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
 
@@ -142,6 +161,10 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Lighter();
                 TextMeshPro.text = TeLichtYes;
                 TimerCheck = true;
+
+                //start thoughts after saying yes
+                string Dialogue = DialogueNPCPlayerYes;
+                DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         if (Input.GetKey(KeyCode.N) && ButtonPressed && !No)
@@ -152,6 +175,10 @@ public class DialogueNPC : MonoBehaviour
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = TeLichtNo;
                 TimerCheck = true;
+
+                //start thoughts after saying ...
+                string Dialogue = DialogueNPCPlayerNo;
+                DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
     }
