@@ -12,7 +12,9 @@ public class DialogueNPC : MonoBehaviour
     private bool Yes = false; //check om of player ja of nee heeft gezegd
     private bool Neutral = false; //check of player neutral was
     private bool TimerCheck = false; //check var voor Timer
+    private bool TalkedTo, CanTalkTo = false;
     public float Timer = 2; //hoelang de timer duurt
+    private string Dialogue;
 
     public TextMeshPro TextMeshPro;
 
@@ -66,15 +68,24 @@ public class DialogueNPC : MonoBehaviour
     {
         JasColorCheck = Jas.Instance.ColorCounter;
         TimerFunc();
+        StartText();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (JasColorCheck > 0.2f && JasColorCheck < 0.8f) Neutraal();
+        CanTalkTo = true;
+    }
 
-        if (JasColorCheck < 0.2f) TeDonker();
+    private void StartText()
+    {
+        if (!TalkedTo && CanTalkTo)
+        {
+            if (JasColorCheck > 0.2f && JasColorCheck < 0.8f) Neutraal();
 
-        if (JasColorCheck > 0.8f) Telicht();
+            if (JasColorCheck < 0.2f) TeDonker();
+
+            if (JasColorCheck > 0.8f) Telicht();
+        }
     }
 
     private void Neutraal()
@@ -88,39 +99,43 @@ public class DialogueNPC : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
+            CanTalkTo = false;
             Yes = true;
             if (Yes)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Lighter();
                 TextMeshPro.text = Neutraalyes;
                 TimerCheck = true;
                 //start thoughts after saying yes
-                string Dialogue = DialogueNPCPlayerYes;
-                DialoguePlayer.Instance.Talk(Dialogue);
+                Dialogue = DialogueNPCPlayerYes;
 
             }
         }
         else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
+            CanTalkTo = false;
             No = true;
             if (No)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = NeutraalNo;
                 TimerCheck = true;
-                string Dialogue = DialogueNPCPlayerNo;
-                DialoguePlayer.Instance.Talk(Dialogue);
+                Dialogue = DialogueNPCPlayerNo;
             }
         }
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
+            CanTalkTo = false;
             Neutral = true;
             if (Neutral)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Neutral();
                 TextMeshPro.text = NeutraalNeutral;
                 TimerCheck = true;
-                string Dialogue = DialogueNPCPlayerNeutral;
+                Dialogue = DialogueNPCPlayerNeutral;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
@@ -137,41 +152,47 @@ public class DialogueNPC : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
+            CanTalkTo = false;
             Yes = true;
             if (Yes)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Lighter();
                 TextMeshPro.text = TeDonkerYes;
                 TimerCheck = true;
                 //start thoughts after saying yes
-                string Dialogue = DialogueNPCPlayerYes;
+                Dialogue = DialogueNPCPlayerYes;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
+            CanTalkTo = false;
             No = true;
             if (No)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = TeDonkerNo;
                 TimerCheck = true;
 
                 //start thoughts after saying yes
-                string Dialogue = DialogueNPCPlayerNo;
+                Dialogue = DialogueNPCPlayerNo;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
+            CanTalkTo = false;
             Neutral = true;
 
             if (Neutral)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Neutral();
                 TextMeshPro.text = NeutraalNeutral;
                 TimerCheck = true;
-                string Dialogue = DialogueNPCPlayerNeutral;
+                Dialogue = DialogueNPCPlayerNeutral;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
@@ -189,6 +210,8 @@ public class DialogueNPC : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Alpha1) && ButtonPressed && !Yes)
         {
+            CanTalkTo = false;
+            TalkedTo = true;
             Yes = true;
             if (Yes)
             {
@@ -197,33 +220,37 @@ public class DialogueNPC : MonoBehaviour
                 TimerCheck = true;
 
                 //start thoughts after saying yes
-                string Dialogue = DialogueNPCPlayerYes;
+                Dialogue = DialogueNPCPlayerYes;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         else if (Input.GetKey(KeyCode.Alpha2) && ButtonPressed && !No)
         {
+            CanTalkTo = false;
             No = true;
             if (No)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Darker();
                 TextMeshPro.text = TeLichtNo;
                 TimerCheck = true;
 
                 //start thoughts after saying ...
-                string Dialogue = DialogueNPCPlayerNo;
+                Dialogue = DialogueNPCPlayerNo;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
         else if (Input.GetKey(KeyCode.Alpha3) && ButtonPressed && !No && !Yes)
         {
+            CanTalkTo = false;
             Neutral = true;
             if (Neutral)
             {
+                TalkedTo = true;
                 ItemPickup.Instance.Neutral();
                 TextMeshPro.text = NeutraalNeutral;
                 TimerCheck = true;
-                string Dialogue = DialogueNPCPlayerNeutral;
+                Dialogue = DialogueNPCPlayerNeutral;
                 DialoguePlayer.Instance.Talk(Dialogue);
             }
         }
@@ -241,9 +268,11 @@ public class DialogueNPC : MonoBehaviour
             }
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other) {
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
         TextMeshPro.text = "";
         ButtonPressed = false;
+        DialoguePlayer.Instance.Talk(Dialogue);
     }
 }

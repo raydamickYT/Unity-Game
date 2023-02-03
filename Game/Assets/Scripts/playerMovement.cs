@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+    public static playerMovement Instance;
     [SerializeField] float speed;
     float Horizontal;
     [SerializeField] float jumpingPower;
@@ -12,10 +13,11 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator PlayerAnimator;
     [SerializeField] private Animator JasAnimator;
-    
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundlayer;
 
+    void Awake() => Instance = this;
 
     // Update is called once per frame
     void Update()

@@ -11,6 +11,7 @@ public class Jas : MonoBehaviour
     //deze storen, de impact van de keuze zodat designers zelf kunnen kiezen per NPC of de keuze positief of negatief is.
     public float YesImpact;
     public float NoImpact;
+    public float NeutralImpact;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class Jas : MonoBehaviour
         }
 
 
-        print(ColorCounter); //debug
+        //print(ColorCounter); //debug
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,6 +48,7 @@ public class Jas : MonoBehaviour
             //hier wordt de waarde opgehaald en tijdelijk gestored.
             YesImpact = NPC.ColorYes;
             NoImpact = NPC.ColorNo;
+            NeutralImpact = NPC.ColorNeutral;
         }
     }
 }
