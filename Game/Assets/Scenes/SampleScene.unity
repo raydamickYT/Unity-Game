@@ -1959,6 +1959,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1270025494}
   - component: {fileID: 1270025497}
+  - component: {fileID: 1270025499}
+  - component: {fileID: 1270025498}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -1978,7 +1980,7 @@ Transform:
   m_LocalScale: {x: 0.4084194, y: 0.42167675, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1420300389}
+  - {fileID: 2106893765}
   m_Father: {fileID: 541790621}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2034,6 +2036,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1270025498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270025493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorYes: 1
+  ColorNo: -1
+  Kleur: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1270025499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270025493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: 2
+  TextMeshPro: {fileID: 2106893766}
+  DialogueNPCPlayerYes: 
+  DialogueNPCPlayerNo: 
+  DialogueNPCPlayerNeutral: 
+  Neutraal1: 
+  Neutraal2: 
+  Neutraalyes: 
+  NeutraalNo: 
+  NeutraalNeutral: 
+  TeDonker1: 
+  TeDonker2: 
+  TeDonkerYes: 
+  TeDonkerNo: 
+  TeDonkerNeutral: 
+  TeLicht1: 
+  TeLicht2: 
+  TeLichtYes: 
+  TeLichtNo: 
+  TeLichtNeutral: 
 --- !u!1 &1286575283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,114 +2328,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1420300388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1420300389}
-  - component: {fileID: 1420300391}
-  - component: {fileID: 1420300390}
-  - component: {fileID: 1420300392}
-  m_Layer: 0
-  m_Name: Dialoog
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1420300389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420300388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2106893765}
-  m_Father: {fileID: 1270025494}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1420300390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420300388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b20d1d3ffbcb8b48be151c839fad361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Timer: 2
-  TextMeshPro: {fileID: 2106893766}
-  DialogueNPCPlayerYes: glad I said yes
-  DialogueNPCPlayerNo: shouldve said yes
-  DialogueNPCPlayerNeutral: it alright
-  Neutraal1: hi
-  Neutraal2: 1/2/3
-  Neutraalyes: 1
-  NeutraalNo: 2
-  NeutraalNeutral: 3
-  TeDonker1: 
-  TeDonker2: 
-  TeDonkerYes: 
-  TeDonkerNo: 
-  TeDonkerNeutral: 
-  TeLicht1: 
-  TeLicht2: 
-  TeLichtYes: 
-  TeLichtNo: 
-  TeLichtNeutral: 
---- !u!114 &1420300391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420300388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0769e22ef8d095640bdd3cd1955035ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColorYes: 1
-  ColorNo: -1
-  Kleur: {r: 0, g: 0, b: 0, a: 0}
---- !u!61 &1420300392
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420300388}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1453941683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,7 +4685,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1420300389}
+  m_Father: {fileID: 1270025494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
